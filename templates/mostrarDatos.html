@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mostrar datos</title>
+</head>
+<body>
+    <h1>Busqueda por id de bitacora</h1>
+    <form action="/datos/" method="GET">
+        <input type="text" name="Id">
+        <input type="submit" value="Buscar">
+    </form>
+    <p>Estas buscando la bitacora con id: <strong>{{query}}</strong></p>
+    {% if bitacoras %}
+        <p>Articulos encontrados {{ bitacoras|length }} bitacoras</p>
+        <table class="bitacora" border="1">
+            <tr>
+                <th>Id</th>
+                <th>Tabla afectada</th>
+                <th>Operacion</th>
+                <th>Usuario</th>
+                <th>Fecha modificacion</th>
+                <th>Consulta</th>
+            </tr>
+            {% for bitacora in bitacoras %}
+                <tr>
+                    <td>{{ bitacora.id_bitacora }} </td>
+                    <td>{{ bitacora.tabla_afectada }} </td>
+                    <td>{{ bitacora.operacion }} </td>
+                    <td>{{ bitacora.usuario }}</td>
+                    <td>{{ bitacora.fecha_modificacion }}</td>
+                    <td>{{ bitacora.consulta_realizada }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No esta la bitacora buscada</p>
+    {% endif %}
+</body>
+</html>
