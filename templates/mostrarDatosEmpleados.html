@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar empleado</title>
+</head>
+<body>
+    <h1>Busqueda por id de empleado</h1>
+    <form action="/datosEmpleados/" method="GET">
+        <input type="text" name="Id_empleado">
+        <input type="submit" value="Buscar">
+    </form>
+    <p>Estas buscando la empleado con id: <strong>{{query}}</strong></p>
+    {% if empleados %}
+        <p>Empleados encontrados: {{ empleados|length }} empleados</p>
+        <table class="empleado" border="1">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+            </tr>
+            {% for empleado in empleados %}
+                <tr>
+                    <td>{{ empleado.id_empleado }} </td>
+                    <td>{{ empleado.nombre}} </td>
+                    <td>{{ empleado.apellido_pat}} </td>
+                    <td>{{ empleado.apellido_mat }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No esta el empleado buscado</p>
+    {% endif %}
+</body>
+</html>

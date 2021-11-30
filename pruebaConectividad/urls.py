@@ -19,6 +19,6 @@ from pruebaConectividad import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('datos/', views.mostrarDatos),
-
+    path('datosBitacora/', views.mostrarDatos),
+    path('datosEmpleados/', views.mostrarDatosEmpleado),
 ]
